@@ -1,7 +1,7 @@
 var Site = angular.module('Site', ['ngResource', 'google-maps']);
 
 Site.factory('LbsApi', ['$resource', function($resource) {
-  return $resource("https://dc1.racowireless.com/api/Receive", {}, {
+  return $resource("https://dc-api.racowireless.com/api/Receive", {}, {
     'get': { isArray: false }
   });
 }])
@@ -11,6 +11,7 @@ Site.controller('MapsCtrl',
 function($scope, $http, LbsApi) {
   $scope.credentials = {};
   $scope.$loading = true;
+  $scope.enableStop = false;
   var LAS_VEGAS_LAT = 36.1079;
   var LAS_VEGAS_LONG = -115.1769;
 
@@ -42,27 +43,37 @@ function($scope, $http, LbsApi) {
   }
 
   var getMessage = function(credentials) {
-    basicAuth = Base64.encode(credentials.customerId + ":" + credentials.webServiceKey)
-    $http.defaults.headers.common['Authorization'] = "Basic " + basicAuth
-    LbsApi.get(function(response) {
-      console.log(response);
-      if (response[0] !== null && response[0] !== 'n') {
-        $scope.loading = false;
-        message = response.details;
-        addMarker(message.latitude, message.longitude);
-        getMessage(credentials);
-      } else {
-        console.log('trying again');
-        getMessage(credentials);
-      }
-
-    });
+    if($scope.enableStop === true) {
+      basicAuth = Base64.encode(credentials.customerId + ":" + credentials.webServiceKey)
+      $http.defaults.headers.common['Authorization'] = "Basic " + basicAuth
+      LbsApi.get(function(response) {
+        console.log(response);
+        if (response[0] !== null && response[0] !== 'n') {
+          $scope.loading = false;
+          message = response.details;
+          addMarker(message.latitude, message.longitude);
+          getMessage(credentials);
+        } else {
+          console.log('trying again');
+          getMessage(credentials);
+        }
+      });
+    }
   }
 
   $scope.connect = function (credentials) {
     $scope.$loading = true;
-    if (credentials.customerId !== null && credentials.webSeviceKey !== null) {
+    if (credentials.customerId != null && credentials.webSeviceKey != null) {
+      $scope.enableStop = true;
       getMessage(credentials);
+    } else {
+      $scope.enableStop = false;
+      $scope.$loading = false;
     }
+  };
+
+  $scope.stopConnection = function() {
+    $scope.enableStop = false;
+    $scope.$loading = false;
   };
 }])
