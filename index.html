@@ -26,7 +26,8 @@
               <input type="text" ng-model="credentials.webServiceKey" placeholder="Password" />
             </li>
             <li>
-              <button class="btn btn-primary" ng-click="connect(credentials)">Connect</button>
+              <button ng-show="!enableStop" class="btn btn-primary" ng-click="connect(credentials)">Connect</button>
+              <button ng-show="enableStop" class="btn btn-danger" ng-click="stopConnection()">Stop</button>
             </li>
           </ul>
         </div>
