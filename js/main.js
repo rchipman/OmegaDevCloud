@@ -63,7 +63,7 @@ function($scope, $http, LbsApi) {
 
   $scope.connect = function (credentials) {
     $scope.$loading = true;
-    if (credentials.customerId != null && credentials.webSeviceKey != null) {
+    if (credentials.customerId != null && credentials.webServiceKey != null) {
       $scope.enableStop = true;
       getMessage(credentials);
     } else {
