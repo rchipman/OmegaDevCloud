@@ -1,7 +1,7 @@
 var Site = angular.module('Site', ['ngResource', 'google-maps']);
 
 Site.factory('LbsApi', ['$resource', function($resource) {
-  return $resource("https://devcloud-staging.racowireless.com/api/Receive", {}, {
+  return $resource("https://dc1.racowireless.com/api/Receive", {}, {
     'get': { isArray: false }
   });
 }])
