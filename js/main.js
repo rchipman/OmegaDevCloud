@@ -20,12 +20,12 @@ Site.controller('MapsCtrl',
 function($scope, $http, LbsApi) {
   $scope.credentials = {};
   $scope.messages = [];
-  $scope.messageMapping = {};
+  $scope.messageMapping = [null, null, null, null];
   availableLocations = [
-    { name: 'Latitude', id: 1, show: true },
-    { name: 'Longitude', id: 2, show: true },
-    { name: 'Title', id: 3, show: true },
-    { name: 'Description', id: 4, show: true }
+    { name: 'Latitude', id: 1},
+    { name: 'Longitude', id:  2 },
+    { name: 'Title', id: 3 },
+    { name: 'Description', id: 4 }
   ];
   $scope.availableLocations = availableLocations;
   $scope.$loading = true;
@@ -107,9 +107,33 @@ function($scope, $http, LbsApi) {
       return m[1] != null && m[2] != null && m[3] != null && m[4] != null && !isNaN(m[1] + m[2])
   }
 
+  propSet = function (prop) {
+      return $scope.messageMapping[prop] != null
+  }
+
+  resetLocs = function(locs) {
+      var arr = []
+      for (var i = 0; i < locs.length; i++) {
+          if (propSet($scope)) {
+              arr.push(availableLocations[i]);
+          }
+      }
+      return arr;
+  }
+
+  resetMapping = function(mapping) {
+      var arr = mapping;
+      for (var i = 0; i < $scope.availableLocations.length; i++) {
+          arr[$scope.availableLocations[i].id] = null;
+      }
+      return arr;
+  }
+
   $scope.setLocation = function(key, id) {
+      console.log("here i am: " + key + " " + id);
       $scope.messageMapping[id] = key
-      $scope.availableLocations.slice() = false
+      $scope.availableLocations = resetLocs($scope.availableLocations)
+      $scope.messageMapping = resetMapping($scope.availableLocations)
       if (messageMapped($scope.messageMapping)) {
           $scope.locationReady = true
       }
