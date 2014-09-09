@@ -18,7 +18,7 @@
           <a class="navbar-brand" href="#">RacoWireless DevCloud</a>
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="pull-right credentials">
+          <ul class="pull-right credentials" ng-show="showMap">
             <li>
               <input type="text" ng-model="credentials.customerId" placeholder="Username" />
             </li>
@@ -33,8 +33,75 @@
         </div>
       </div>
     </div>
+    <div class="container content" ng-show="!showMap">
+        <div ng-show="!connectionReady && !modelReady">
+            <div class="alert alert-danger" ng-show="formAlert">
+                Both Partner ID and Web Service Key are required fields.
+            </div>
+            <form action="">
+                <div class="form-group">
+                    <label for="partnerId">Partner ID*</label>
+                    <input class="form-control" type="text" name="partnerId" ng-model="credentials.customerId">
+                    <label for="webServiceKey">Web Service Key*</label>
+                    <input class="form-control" type="text" name="webServiceKey" ng-model="credentials.webServiceKey">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary pull-right" ng-click="connect(credentials)">Connect</button>
+                    <button class="btn btn-danger pull-right" ng-click="clearForm()">Clear</button>
+                </div>
+            </form>
+        </div>
 
-    <div class="map" >
+        <div ng-show="connectionReady && !modelReady">
+            <h3>Choose the message format you wish to use on for displaying on the map.</h3>
+            <ul class="messages">
+                <li ng-repeat="message in messages" ng-class="{'selected': message.selected}" ng-click="setMessageTemplate(message)">
+                    {{message.data}}
+                </li>
+            </ul>
+            <div class="mapper" ng-show="messageTemplate != null">
+                <hr class="seperator">
+                <h3>Select the fields that you wish to use for display purposes.</h3>
+                <p class="muted">
+                    Note that the latitude and longitude fields need to me actual latitude and longitude data for the map to work properly.
+                </p>
+                <div class="location-example">
+                    <!--
+                        Add map with generic marker at current locale
+                        and update the display when the user makes changes to
+                        the mapper object to show expected output.
+                    -->
+                </div>
+                <ul class="message-template">
+                    <li ng-repeat="(key, val) in messageTemplate">
+                         <div class="row">
+                             <div class="col-md-4">
+                                 <label>Property</label>
+                                 <div class="fake-input">
+                                     {{key}}
+                                 </div>
+                             </div>
+                             <div class="col-md-4">
+                                 <label>Value</label>
+                                 <div class="fake-input">
+                                     {{val}}
+                                 </div>
+                             </div>
+                             <div class="col-md-4">
+                                 <label>Display Location</label>
+                                 <select class="form-control" ng-model="blah" ng-change="setLocation(key, location.id)" ng-options="loc.id as loc.name for loc in availableLocations"></select>
+                             </div>
+                         </div>
+                    </li>
+                </ul>
+                <div class="btn-group">
+                    <button ng-click="showMap()" class="btn btn-default" ng-class="{'btn-success': locationReady}" ng-disabled="!locationReady"></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="map" ng-show="showMap">
       <google-map center="map.center" zoom="map.zoom" draggable="true" pan="true" events="map.events"></google-map>
       <div class="loading" ng-show="$loading">
         <div class="spinner">
@@ -45,11 +112,11 @@
       </div>
     </div>
 
-    <script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <!-- <script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script> -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src='bower_components/lodash/dist/lodash.underscore.min.js'></script>
-    <script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+    <!-- <script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script> -->
     <script src="js/base64.js"></script>
     <script src="js/main.js" ></script>
   </body>

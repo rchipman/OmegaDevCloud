@@ -1,6 +1,14 @@
 body, html, .map, .angular-google-map, .angular-google-map-container {
   height: 100%;
 }
+body input.form-control {
+    border-radius: 0;
+}
+.container.content {
+    padding-top: 120px;
+    height: 100%;
+    overflow: auto;
+}
 .map {
   padding-top: 50px;
 }
@@ -30,6 +38,14 @@ body, html, .map, .angular-google-map, .angular-google-map-container {
 .credentials li button {
   border: none;
 }
+.form-group .btn {
+    margin-left: 15px;
+}
+.btn {
+    border-radius: 0;
+    border: none;
+    font-weight: bold;
+}
 .btn.btn-primary {
   background: #8ac53e;
 }
@@ -39,7 +55,40 @@ body, html, .map, .angular-google-map, .angular-google-map-container {
 .btn:focus, .btn:active, .btn:active:focus {
   outline: none;
 }
-
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+.messages li {
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.messages li:hover {
+    background: #eee;
+}
+.messages li.selected {
+    background: #8ac53e;
+    color: #fff;
+}
+.message-template {
+    padding: 0;
+    margin: 20px 0 0 0;
+    list-style: none;
+}
+.message-template li {
+    margin: 10px 0;
+}
+.fake-input {
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+}
+hr.seperator {
+    margin: 40px 0;
+}
 
 /* Spinner */
 
