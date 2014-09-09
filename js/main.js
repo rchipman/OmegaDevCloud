@@ -50,8 +50,10 @@ function($scope, $http, LbsApi) {
         console.log(response);
         if (response[0] !== null && response[0] !== 'n') {
           $scope.loading = false;
-          message = response.details;
-          addMarker(message.latitude, message.longitude);
+          message = response.output;
+          if (message.latitude != null && message.longitude != null) {
+              addMarker(message.latitude, message.longitude);
+          }
           getMessage(credentials);
         } else {
           console.log('trying again');
