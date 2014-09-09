@@ -89,7 +89,15 @@
                              </div>
                              <div class="col-md-4">
                                  <label>Display Location</label>
-                                 <select class="form-control" ng-model="message.omegaDevCloudMappingLocationZZZZZZ" ng-change="setLocation(key, message.omegaDevCloudMappingLocationZZZZZZ)" ng-options="loc.id as loc.name for loc in availableLocations"></select>
+                                 <div class="form-control">
+                                     {{omegaDevCloudMappingLocation}}
+                                 </div>
+                                 <div>
+                                     <ul>
+                                         <li ng-repeat="lloc in availableLocations" ng-click="setLocation(message, loc)"></li>
+                                     </ul>
+                                 </div>
+                                 <select class="form-control" ng-model="message.omegaDevCloudMappingLocation"  ng-options=""></select>
                              </div>
                          </div>
                     </li>
