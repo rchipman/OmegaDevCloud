@@ -4,6 +4,12 @@ body, html, .map, .angular-google-map, .angular-google-map-container {
 .map {
   padding-top: 50px;
 }
+.navbar-brand {
+    margin-top: -4px;
+}
+.navbar-brand:hover {
+    opacity: 0.8;
+}
 .loading {
   position: absolute;
   height: 100%;

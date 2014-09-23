@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DevCloud LBS Demo</title>
+    <title>DevCloud Demo</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body ng-app="Site" ng-controller="MapsCtrl">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -15,22 +14,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">RacoWireless DevCloud - GPS Tracker Demo</a>
+          <a class="navbar-brand" href="#">
+            <img src="img/dev-cloud-logo.png" alt="Omega DevCloud" />
+          </a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="pull-right credentials">
             <li>
-              <input type="text" ng-model="credentials.customerId" placeholder="Username" />
+              <input type="text" ng-model="credentials.customerId" placeholder="Partner ID" />
             </li>
             <li>
-              <input type="text" ng-model="credentials.webServiceKey" placeholder="Password" />
+              <input type="text" ng-model="credentials.webServiceKey" placeholder="Web Service Key" />
             </li>
             <li>
-              <button class="btn btn-primary" ng-click="connect(credentials)">Connect</button>
+              <button ng-show="!enableStop" class="btn btn-primary" ng-click="connect(credentials)">Connect</button>
+              <button ng-show="enableStop" class="btn btn-danger" ng-click="stopConnection()">Stop</button>
             </li>
           </ul>
         </div>
-      </div>
     </div>
 
     <div class="map" >
