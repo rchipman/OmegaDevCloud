@@ -72,7 +72,7 @@ Example for unicode:
 
 Example for binary:
 ```
-"message": "NjE0OjkzMENDMEJFNTYzMEMyM0VDNTZBNjZFNkQzMDVGNDc1===""
+"message": "NjE0OjkzMENDMEJFNTYzMEMyM0VDNTZBNjZFNkQzMDVGNDc1==="
 ```
 
 ## To view historical messages from your device
@@ -106,8 +106,14 @@ $page indicates how many messages to skip in the list.
 GET https://dc-api.racowireless.com/messages?$page=
 ```
 
-####$pageSize -`int` (default = 25)
+####$pageSize - `int` (default = 25)
 $pageSize indicates how many messages to take from the list.
 ```
 GET https://dc-api.racowireless.com/messages?$pageSize=
+```
+
+####$orderBy - `bool` (default = true)
+$orderBy indicates if the results should be ordered in descending or not by received time.
+```
+GET https://dc-api.racowireless.com/messages?$orderBy=
 ```
