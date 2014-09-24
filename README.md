@@ -41,9 +41,9 @@ The HTTP POST request takes a JSON object with the following properties:
 
 ```
 {
-    deviceId: <string>
-    expirationTime: <DateTime>
-    message: <string>
+    "deviceId": "234614313461346aga"
+    "expirationTime": "2014/09/17 00:00:00",
+    "message": "+RESP:SET,25.677,-123.444,0,1,1,0,1",
 }
 ```
 ####deviceId - `string`
@@ -51,7 +51,7 @@ The `deviceId` property is a required property that will tell server where to se
 
 Example:
 ```
-deviceId: '234614313461346aga'
+"deviceId": "234614313461346aga"
 ```
 
 #### expirationTime - `DateTime`
@@ -59,7 +59,7 @@ The `expirationTime` property is a required property that takes a `DateTime` obj
 
 Example:
 ```
-expirationTime: '2014/09/17 00:00:00'
+"expirationTime": "2014/09/17 00:00:00"
 ```
 
 ####message - `string`
@@ -67,12 +67,12 @@ the `message` property is a required property that takes a `string` that is sent
 
 Example for unicode:
 ```
-message: '+RESP:SET,25.677,-123.444,0,1,1,0,1'
+"message": "+RESP:SET,25.677,-123.444,0,1,1,0,1"
 ```
 
 Example for binary:
 ```
-message: 'NjE0OjkzMENDMEJFNTYzMEMyM0VDNTZBNjZFNkQzMDVGNDc1==='
+"message": "NjE0OjkzMENDMEJFNTYzMEMyM0VDNTZBNjZFNkQzMDVGNDc1===""
 ```
 
 ## To view historical messages from your device
