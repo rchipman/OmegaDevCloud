@@ -33,7 +33,47 @@ Message
 NOTE: Timestamps are in UTC
 ```
 ## To send a message to your device
-Content not yet available
+To send a message to your device, make an HTTP POST request to the following web service endpoint.
+```
+POST https://dc-api.racowireless.com/send
+```
+The HTTP POST request takes a JSON object with the following properties:
+
+```
+{
+    deviceId: <string>
+    expirationTime: <DateTime>
+    message: <string>
+}
+```
+####deviceId - `string`
+The `deviceId` property is a required property that will tell server where to send your message.  It must match a previously registered hardware device's deviceId in order for the message to be delivered successfully.
+
+Example:
+```
+deviceId: '234614313461346aga'
+```
+
+#### expirationTime - `DateTime`
+The `expirationTime` property is a required property that takes a `DateTime` object with the time and date that you wish for the message to no longer be sent to your device. The `DateTime` object can be created by using a `string` with the following format: `YYYY/MM/DD hh:mm:ss`
+
+Example:
+```
+expirationTime: '2014/09/17 00:00:00'
+```
+
+####message - `string`
+the `message` property is a required property that takes a `string` that is sent to your device.  If your device expects **binary** rather than **unicode**, you will want to the use a base64 encoded byte array of the data that you wish to send.
+
+Example for unicode:
+```
+message: '+RESP:SET,25.677,-123.444,0,1,1,0,1'
+```
+
+Example for binary:
+```
+message: 'NjE0OjkzMENDMEJFNTYzMEMyM0VDNTZBNjZFNkQzMDVGNDc1==='
+```
 
 ## To view historical messages from your device
 To view historical messages, make an HTTP GET request to the following web service endpoint.
@@ -42,31 +82,31 @@ GET https://dc-api.racowireless.com/messages
 ```
 Use the following optional parameters to filter your data:
 
-####$startDate
-$startDate indicates a DateTime that historical messages should be filtered from.
+####$startDate - `DateTime`
+$startDate indicates a `DateTime` that historical messages should be filtered from.
 ```
 GET https://dc-api.racowireless.com/messages?$startDate=
 ```
 
-####$endDate
-$endDate indicates a DateTime that historical messages should be filtered to.
+####$endDate - `DateTime`
+$endDate indicates a `DateTime` that historical messages should be filtered to.
 ```
 GET https://dc-api.racowireless.com/messages?$endDate=
 ```
 
-####$identifier
+####$identifier - `string`
 $identifier is a Unique ID that you have provided to identify your device.
 ```
 GET https://dc-api.racowireless.com/messages?$identifier=
 ```
 
-####$page (default = 1)
+####$page - `int` (default = 1)
 $page indicates how many messages to skip in the list.
 ```
 GET https://dc-api.racowireless.com/messages?$page=
 ```
 
-####$pageSize (default = 25)
+####$pageSize -`int` (default = 25)
 $pageSize indicates how many messages to take from the list.
 ```
 GET https://dc-api.racowireless.com/messages?$pageSize=
