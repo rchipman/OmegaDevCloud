@@ -82,37 +82,36 @@ GET https://dc-api.racowireless.com/messages
 ```
 Use the following optional parameters to filter your data:
 
-####$startDate - `DateTime`
+####startDate - `DateTime`
 startDate indicates a `DateTime` that historical messages should be filtered from.
 ```
 GET https://dc-api.racowireless.com/messages?startDate=
 ```
 
-####$endDate - `DateTime`
+####endDate - `DateTime`
 endDate indicates a `DateTime` that historical messages should be filtered to.
 ```
 GET https://dc-api.racowireless.com/messages?endDate=
 ```
 
-####$identifier - `string`
-identifier is a Unique ID that you have provided to identify your device.
+####deviceIdentifier - `string`
+deviceIdentifier is a Unique ID that you have provided to identify your device.
 ```
-GET https://dc-api.racowireless.com/messages?identifier=
+GET https://dc-api.racowireless.com/messages?deviceIdentifier=
 ```
 
-####$page - `int` (default = 1)
+####page - `int` (default = 1)
 page indicates how many messages to skip in the list.
 ```
 GET https://dc-api.racowireless.com/messages?page=
 ```
 
-####$pageSize - `int` (default = 25)
+####pageSize - `int` (default = 25)
 pageSize indicates how many messages to take from the list.
 ```
 GET https://dc-api.racowireless.com/messages?pageSize=
 ```
-
-####$orderBy - `bool` (default = true)
+####desc - `bool` (default = true)
 desc indicates if the results should be ordered in descending or not by received time.
 ```
 GET https://dc-api.racowireless.com/messages?desc=
