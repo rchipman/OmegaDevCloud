@@ -111,7 +111,7 @@ pageSize indicates how many messages to take from the list.
 ```
 GET https://dc-api.racowireless.com/messages?pageSize=
 ```
-####desc - `bool` (default = true)
+####desc - `bool` (default = false)
 desc indicates if the results should be ordered in descending or not by received time.
 ```
 GET https://dc-api.racowireless.com/messages?desc=
