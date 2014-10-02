@@ -18,16 +18,22 @@ To receive a message, make an HTTP GET request to the web service endpoint.  You
 ```
 GET https://dc-api.racowireless.com/receive
 
-Message
 {
-  "messageId":48124587452, (64 bit integer)
-  "recipient":"15554442233",
-  "message":"aGVsbG8gc2VydmVy",
-  "acceptedTimestamp":"2013-09-20 12:12:22.501Z",
-  "submittedToCarrierTimestamp":"2013-09-20 12:12:23.000Z",
-  "carrierAcceptedTimestamp":"2013-09-20 12:12:23.900Z",
-  "finalizedTimestamp":"2013-09-20 12:12:26.101Z",
-  "messageStatus":4
+	"messageId" : "27e7acc1-188e-4fae-9ac7-10aac55e8ea5",
+	"rawData" : "base64EncodedBinaryOrASCII",
+	"binary" : false,
+	"messageDefinition" : "MyMessageDefinition",
+	"details" : {
+		"deviceIdentifier" : "ec0eb2718fedd205",
+		"timestamp" : "1411569341355",
+		"operatingSystem" : "Android 4.4.4",
+		"latitude" : 39.2445589,
+		"longitude" : -84.3848572,
+	}
+	"received" : "2014-09-24T14:35:42.8497395Z",
+	"ip" : "128.156.99.51",
+	"port" : 55555,
+	"collector" : "My Collector"
 }
 
 NOTE: Timestamps are in UTC
