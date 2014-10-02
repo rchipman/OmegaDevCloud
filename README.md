@@ -83,37 +83,37 @@ GET https://dc-api.racowireless.com/messages
 Use the following optional parameters to filter your data:
 
 ####$startDate - `DateTime`
-$startDate indicates a `DateTime` that historical messages should be filtered from.
+startDate indicates a `DateTime` that historical messages should be filtered from.
 ```
-GET https://dc-api.racowireless.com/messages?$startDate=
+GET https://dc-api.racowireless.com/messages?startDate=
 ```
 
 ####$endDate - `DateTime`
-$endDate indicates a `DateTime` that historical messages should be filtered to.
+endDate indicates a `DateTime` that historical messages should be filtered to.
 ```
-GET https://dc-api.racowireless.com/messages?$endDate=
+GET https://dc-api.racowireless.com/messages?endDate=
 ```
 
 ####$identifier - `string`
-$identifier is a Unique ID that you have provided to identify your device.
+identifier is a Unique ID that you have provided to identify your device.
 ```
-GET https://dc-api.racowireless.com/messages?$identifier=
+GET https://dc-api.racowireless.com/messages?identifier=
 ```
 
 ####$page - `int` (default = 1)
-$page indicates how many messages to skip in the list.
+page indicates how many messages to skip in the list.
 ```
-GET https://dc-api.racowireless.com/messages?$page=
+GET https://dc-api.racowireless.com/messages?page=
 ```
 
 ####$pageSize - `int` (default = 25)
-$pageSize indicates how many messages to take from the list.
+pageSize indicates how many messages to take from the list.
 ```
-GET https://dc-api.racowireless.com/messages?$pageSize=
+GET https://dc-api.racowireless.com/messages?pageSize=
 ```
 
 ####$orderBy - `bool` (default = true)
-$orderBy indicates if the results should be ordered in descending or not by received time.
+desc indicates if the results should be ordered in descending or not by received time.
 ```
-GET https://dc-api.racowireless.com/messages?$orderBy=
+GET https://dc-api.racowireless.com/messages?desc=
 ```
