@@ -60,12 +60,16 @@ Example:
 "deviceId": "234614313461346aga"
 ```
 
-#### expirationTime - `DateTime`
-The `expirationTime` property is a required property that takes a `DateTime` object with the time and date that you wish for the message to no longer be sent to your device. The `DateTime` object can be created by using a `string` with the following format: `YYYY/MM/DD hh:mm:ss`
-
+#### expirationTime - `string`
+The `expirationTime` property is an optional property that takes a `string` with the time and date that you wish for the message to no longer be sent to your device, the `string` can be either a `DateTime` formatted string, or the number of seconds. If you opt to use a `DateTime` encoded string, it can be created by using the following format: <code>YYYY/MM/DD hh:mm:ss</code></p>
 Example:
+
 ```
 "expirationTime": "2014/09/17 00:00:00"
+```
+or
+```
+"expirationTime": "18000" // 5 hours in seconds
 ```
 
 ####message - `string`
