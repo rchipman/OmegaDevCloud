@@ -61,7 +61,7 @@ Example:
 ```
 
 #### expirationTime - `string`
-The `expirationTime` property is an optional property that takes a `string` with the time and date that you wish for the message to no longer be sent to your device, the `string` can be either a `DateTime` formatted string, or the number of seconds. If you opt to use a `DateTime` encoded string, it can be created by using the following format: <code>YYYY/MM/DD hh:mm:ss</code></p>
+The `expirationTime` property is an optional property that takes a `string` with the time and date that you wish for the message to no longer be sent to your device. The `string` can be either a `DateTime` formatted string, or the number of seconds as an `int`. If you opt to use a `DateTime` encoded string, it can be created by using the following format: <code>YYYY/MM/DD hh:mm:ss</code></p>
 Example:
 
 ```
