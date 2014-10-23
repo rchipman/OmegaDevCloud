@@ -50,7 +50,7 @@ function($scope, $http, LbsApi) {
         console.log(response);
         if (response[0] !== null && response[0] !== 'n') {
           $scope.loading = false;
-          message = response.output;
+          message = response.details;
           if (message.latitude != null && message.longitude != null) {
               addMarker(message.latitude, message.longitude);
           }
