@@ -43,6 +43,9 @@ To send a message to your device, make an HTTP POST request to the following web
 ```
 POST https://dc-api.racowireless.com/send
 ```
+####What the /send API does
+This API is used to send a message to a specific device. This message will not be pushed to the device directly but will be placed into a message queue until that device connects to the network. Once the device connects to the network, all messages within the queue will be relayed to the device.
+
 The HTTP POST request takes a JSON object with the following properties:
 
 ```
@@ -52,6 +55,9 @@ The HTTP POST request takes a JSON object with the following properties:
     "message": "+RESP:SET,25.677,-123.444,0,1,1,0,1",
 }
 ```
+####When to use the /send API
+It is not recommended to use this API when a device requires a message immediately but rather when you wish to convey a message to a device the next time it connects to the server.
+
 ####deviceId - `string`
 The `deviceId` property is a required property that will tell server where to send your message.  It must match a previously registered hardware device's deviceId in order for the message to be delivered successfully.
 
@@ -84,6 +90,21 @@ Example for binary:
 ```
 "message": "NjE0OjkzMENDMEJFNTYzMEMyM0VDNTZBNjZFNkQzMDVGNDc1==="
 ```
+
+###Responses from the /send API
+```
+{
+    "messageId": "29D71ECC-697D-41DC-8DED-40F68E117B66",
+    "Expiration": "2014/09/17 00:00:00",
+    "StatusId": 3,
+    "Status": "Message Sent"
+}
+```
+####Possible Statuses:
+0. Device Not Found. Occurs when the deviceId fromt he incoming message does not match a registered device on your account.
+1. Expiration Exceeded. Occurs when the expiration time of the incoming message has been exceeded before the device can be contacted.
+2. Message Not Sent. Occurs if there is an error saving the message to the message queue for the specified device.
+3. Message Sent. Occurs when the message has been successfully queued.
 
 ## To view historical messages from your device
 To view historical messages, make an HTTP GET request to the following web service endpoint.
