@@ -101,10 +101,10 @@ Example for binary:
 }
 ```
 ####Possible Statuses:
-0. Device Not Found. Occurs when the deviceId fromt he incoming message does not match a registered device on your account.
-1. Expiration Exceeded. Occurs when the expiration time of the incoming message has been exceeded before the device can be contacted.
-2. Message Not Sent. Occurs if there is an error saving the message to the message queue for the specified device.
-3. Message Sent. Occurs when the message has been successfully queued.
+0. **Device Not Found.** *Occurs when the deviceId fromt he incoming message does not match a registered device on your account.*
+1. **Expiration Exceeded.** *Occurs when the expiration time of the incoming message has been exceeded before the device can be contacted.*
+2. **Message Not Sent.** *Occurs if there is an error saving the message to the message queue for the specified device.*
+3. **Message Sent.** *Occurs when the message has been successfully queued.*
 
 ## To view historical messages from your device
 To view historical messages, make an HTTP GET request to the following web service endpoint.
