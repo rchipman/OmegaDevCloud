@@ -92,7 +92,7 @@ GET https://dc-api.racowireless.com/messages
 ```
 Use the following optional parameters to filter your data:
 
-####startDate - `DateTime`
+####startDate - [DateTime](#accepted-date-formats)
 startDate indicates a `DateTime` that historical messages should be filtered from.
 ```
 GET https://dc-api.racowireless.com/messages?startDate=2014/09/17 00:00:00
