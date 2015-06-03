@@ -61,7 +61,7 @@ Example:
 ```
 
 #### expirationTime - `string`
-The `expirationTime` property is an optional property that takes a `string` with the time and date that you wish for the message to no longer be sent to your device. The `string` can be either a `DateTime` formatted string, or the number of seconds as an `int`. If you opt to use a `DateTime` encoded string, it can be created by using the following format: <code>YYYY/MM/DD hh:mm:ss</code></p>
+The `expirationTime` property is an optional property that takes a `string` with the time and date that you wish for the message to no longer be sent to your device. The `string` can be either a [`DateTime`](#accepted-date-formats) formatted string, or the number of seconds as an `int`. If you opt to use a [`DateTime`](#accepted-date-formats) encoded string, it can be created by using the following format: <code>YYYY/MM/DD hh:mm:ss</code></p>
 Example:
 
 ```
@@ -90,16 +90,16 @@ To view historical messages, make an HTTP GET request to the following web servi
 ```
 GET https://dc-api.racowireless.com/messages
 ```
-Use the following optional parameters to filter your data:
+Use the following optional parameters to filter your data:`
 
-####startDate - [DateTime](#accepted-date-formats)
-startDate indicates a `DateTime` that historical messages should be filtered from.
+####startDate - [`DateTime`](#accepted-date-formats)
+startDate indicates a [`DateTime`](#accepted-date-formats) that historical messages should be filtered from.
 ```
 GET https://dc-api.racowireless.com/messages?startDate=2014/09/17 00:00:00
 ```
 
-####endDate - `DateTime`
-endDate indicates a `DateTime` that historical messages should be filtered to.
+####endDate - [`DateTime`](#accepted-date-formats)
+endDate indicates a [`DateTime`](#accepted-date-formats) that historical messages should be filtered to.
 ```
 GET https://dc-api.racowireless.com/messages?endDate=2014/09/17 00:00:00
 ```
