@@ -95,36 +95,36 @@ Use the following optional parameters to filter your data:
 ####startDate - `DateTime`
 startDate indicates a `DateTime` that historical messages should be filtered from.
 ```
-GET https://dc-api.racowireless.com/messages?startDate=
+GET https://dc-api.racowireless.com/messages?startDate=2014/09/17 00:00:00
 ```
 
 ####endDate - `DateTime`
 endDate indicates a `DateTime` that historical messages should be filtered to.
 ```
-GET https://dc-api.racowireless.com/messages?endDate=
+GET https://dc-api.racowireless.com/messages?endDate=2014/09/17 00:00:00
 ```
 
 ####deviceIdentifier - `string`
 deviceIdentifier is a Unique ID that you have provided to identify your device.
 ```
-GET https://dc-api.racowireless.com/messages?deviceIdentifier=
+GET https://dc-api.racowireless.com/messages?deviceIdentifier=1231346123
 ```
 
 ####page - `int` (default = 1)
 page indicates how many messages to skip in the list.
 ```
-GET https://dc-api.racowireless.com/messages?page=
+GET https://dc-api.racowireless.com/messages?page=1
 ```
 
 ####pageSize - `int` (default = 25)
 pageSize indicates how many messages to take from the list.
 ```
-GET https://dc-api.racowireless.com/messages?pageSize=
+GET https://dc-api.racowireless.com/messages?pageSize=25
 ```
 ####desc - `bool` (default = false)
 desc indicates if the results should be ordered in descending or not by received time.
 ```
-GET https://dc-api.racowireless.com/messages?desc=
+GET https://dc-api.racowireless.com/messages?desc=false
 ```
 ###Accepted Date Formats
 The following date formats are acceptable.
