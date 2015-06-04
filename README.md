@@ -61,7 +61,7 @@ Example:
 ```
 
 #### expirationTime - `string`
-The `expirationTime` property is an optional property that takes a `string` with the time and date that you wish for the message to no longer be sent to your device. The `string` can be either a `DateTime` formatted string, or the number of seconds as an `int`. If you opt to use a `DateTime` encoded string, it can be created by using the following format: <code>YYYY/MM/DD hh:mm:ss</code></p>
+The `expirationTime` property is an optional property that takes a `string` with the time and date that you wish for the message to no longer be sent to your device. The `string` can be either a [`DateTime`](#accepted-date-formats) formatted string, or the number of seconds as an `int`. If you opt to use a [`DateTime`](#accepted-date-formats) encoded string, it can be created by using the following format: <code>YYYY/MM/DD hh:mm:ss</code></p>
 Example:
 
 ```
@@ -90,39 +90,99 @@ To view historical messages, make an HTTP GET request to the following web servi
 ```
 GET https://dc-api.racowireless.com/messages
 ```
-Use the following optional parameters to filter your data:
+Use the following optional parameters to filter your data:`
 
-####startDate - `DateTime`
-startDate indicates a `DateTime` that historical messages should be filtered from.
+####startDate - [`DateTime`](#accepted-date-formats)
+startDate indicates a [`DateTime`](#accepted-date-formats) that historical messages should be filtered from.
 ```
-GET https://dc-api.racowireless.com/messages?startDate=
+GET https://dc-api.racowireless.com/messages?startDate=2014/09/17 00:00:00
 ```
 
-####endDate - `DateTime`
-endDate indicates a `DateTime` that historical messages should be filtered to.
+####endDate - [`DateTime`](#accepted-date-formats)
+endDate indicates a [`DateTime`](#accepted-date-formats) that historical messages should be filtered to.
 ```
-GET https://dc-api.racowireless.com/messages?endDate=
+GET https://dc-api.racowireless.com/messages?endDate=2014/09/17 00:00:00
 ```
 
 ####deviceIdentifier - `string`
 deviceIdentifier is a Unique ID that you have provided to identify your device.
 ```
-GET https://dc-api.racowireless.com/messages?deviceIdentifier=
+GET https://dc-api.racowireless.com/messages?deviceIdentifier=1231346123
 ```
 
 ####page - `int` (default = 1)
 page indicates how many messages to skip in the list.
 ```
-GET https://dc-api.racowireless.com/messages?page=
+GET https://dc-api.racowireless.com/messages?page=1
 ```
 
 ####pageSize - `int` (default = 25)
 pageSize indicates how many messages to take from the list.
 ```
-GET https://dc-api.racowireless.com/messages?pageSize=
+GET https://dc-api.racowireless.com/messages?pageSize=25
 ```
 ####desc - `bool` (default = false)
 desc indicates if the results should be ordered in descending or not by received time.
 ```
-GET https://dc-api.racowireless.com/messages?desc=
+GET https://dc-api.racowireless.com/messages?desc=false
+```
+###Accepted Date Formats
+The following date formats are acceptable.
+
+```
+Date String                           Date                
+ 
+01/06/2013                            01/06/2013 00:00:00 
+01/06/13                              01/06/2013 00:00:00 
+1/6/13                                01/06/2013 00:00:00 
+1.6.13                                01/06/2013 00:00:00 
+2013-06-01                            01/06/2013 00:00:00 
+01 June 2013                          01/06/2013 00:00:00 
+1 June 2013                           01/06/2013 00:00:00 
+01 June 2013 12:32                    01/06/2013 12:32:00 
+01 June 2013 12:32                    01/06/2013 12:32:00 
+01 June 2013 12:32 PM                 01/06/2013 12:32:00 
+01 June 2013 12:32 PM                 01/06/2013 12:32:00 
+1 June 2013 12:32                     01/06/2013 12:32:00 
+1 June 2013 12:32 PM                  01/06/2013 12:32:00 
+01 June 2013 12:32:30                 01/06/2013 12:32:30 
+01 June 2013 12:32:30 PM              01/06/2013 12:32:30 
+1 June 2013 12:32:30                  01/06/2013 12:32:30 
+1 June 2013 12:32:30 PM               01/06/2013 12:32:30 
+01/06/2013 12:32                      01/06/2013 12:32:00 
+01/06/2013 12:32 PM                   01/06/2013 12:32:00 
+01/06/13 12:32                        01/06/2013 12:32:00 
+01/06/13 12:32 PM                     01/06/2013 12:32:00 
+1/6/13 12:32                          01/06/2013 12:32:00 
+1/6/13 12:32 PM                       01/06/2013 12:32:00 
+1.6.13 12:32                          01/06/2013 12:32:00 
+1.6.13 12:32 PM                       01/06/2013 12:32:00 
+2013-06-01 12:32                      01/06/2013 12:32:00 
+2013-06-01 12:32 PM                   01/06/2013 12:32:00 
+01/06/2013 12:32:30                   01/06/2013 12:32:30 
+01/06/2013 12:32:30 PM                01/06/2013 12:32:30 
+01/06/13 12:32:30                     01/06/2013 12:32:30 
+01/06/13 12:32:30 PM                  01/06/2013 12:32:30 
+1/6/13 12:32:30                       01/06/2013 12:32:30 
+1/6/13 12:32:30 PM                    01/06/2013 12:32:30 
+1.6.13 12:32:30                       01/06/2013 12:32:30 
+1.6.13 12:32:30 PM                    01/06/2013 12:32:30 
+2013-06-01 12:32:30                   01/06/2013 12:32:30 
+2013-06-01 12:32:30 PM                01/06/2013 12:32:30 
+01 June                               01/06/2013 00:00:00 
+2013-06-01T12:32:30.0000000           01/06/2013 12:32:30 
+Sat, 01 Jun 2013 12:32:30 GMT         01/06/2013 05:32:30 
+2013-06-01T12:32:30                   01/06/2013 12:32:30 
+12:32                                 22/04/2013 12:32:00 
+12:32 PM                              22/04/2013 12:32:00 
+12:32:30                              22/04/2013 12:32:30 
+12:32:30 PM                           22/04/2013 12:32:30 
+2013-06-01 12:32:30Z                  01/06/2013 05:32:30 
+01 June 2013 19:32:30                 01/06/2013 19:32:30 
+01 June 2013 07:32:30 PM              01/06/2013 19:32:30 
+01 June 2013 7:32:30 PM               01/06/2013 19:32:30 
+1 June 2013 19:32:30                  01/06/2013 19:32:30 
+1 June 2013 07:32:30 PM               01/06/2013 19:32:30 
+1 June 2013 7:32:30 PM                01/06/2013 19:32:30 
+June 2013                             01/06/2013 00:00:00 
 ```
